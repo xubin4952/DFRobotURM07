@@ -24,6 +24,8 @@ class DFRobotURM07 {
   static boolean _isBusy;  //whether the serial is busy
   
   Stream* _serial;
+  unsigned long timeOutTimer;
+  unsigned long timeOutDuration;
   
   byte receivedCommandStack[ReceivedCommandStackLength];
   byte sendingCommandStack[SendingCommandStackLength];
@@ -56,6 +58,12 @@ class DFRobotURM07 {
    */
   void begin(Stream& theSerial);
   
+  /**
+   Set Time out Duration when reading.
+   
+   @param timeDuration The time duration in millisecond.
+   */
+  void setTimeOut(unsigned long timeDuration);
   
   /**
    Read distance in blocking mode;
